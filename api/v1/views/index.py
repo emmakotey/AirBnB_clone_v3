@@ -27,4 +27,3 @@ def obj_stats():
             "users": storage.count("User")
             }
     return jsonify(my_dict)
-
