@@ -48,13 +48,12 @@ def users(user_id=None):
                 if user.id == user_id:
                     user.name = my_dict.get("name")
                     user.save()
-                    return jsonify(user.to_dict()), 200
+                    return jsonify(user.to_dict())
             abort(404)
-
         elif request.method == 'DELETE':
-            for obj in users_objs.values():
-                if obj.id == user_id:
-                    storage.delete(obj)
+            for user in users_objs.values():
+                if user.id == user_id:
+                    storage.delete(user)
                     storage.save()
-                    return jsonify({}), 200
+                    return jsonify({})
             abort(404)
